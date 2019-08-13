@@ -42,7 +42,7 @@ resource "tls_private_key" "kp_devops" {
 }
 
 resource "aws_key_pair" "generated_key"{
-	key_name = "ec2_devops_pub"
+	key_name = "${tls_private_key.kp_devops.id}"
 	public_key = "${tls_private_key.kp_devops.public_key_openssh}"
 }
 
