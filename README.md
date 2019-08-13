@@ -6,6 +6,8 @@
   export AWS_SECRET_ACCESS_KEY=<INSERT YOUR AWS SECRET KEY>
 4. Run terraform init in the git clone directory
 5. Run terraform apply in the git clone directory
+6. Copy the generated private output into a <filename>.pem file.
+7. ssh -i <pem file> ubuntu@<public ip address of ec2>
 
 # Assumptions
 1. Entire VPC is public (for convenience sake, should not be the case in production)
