@@ -13,3 +13,8 @@
 1. Entire VPC is public (for convenience sake, should not be the case in production)
 2. Keypair is generated using RSA algorithm with 4096 bits
 3. Availability Zone is assumed to be ap-southeast-1a (Singapore)
+4. User belong to groups:
+ AmazonEC2FullAccess
+ AmazonVPCCrossAccountNetworkInterfaceOperations
+ AmazonDMSVPCManagementRole
+ AmazonDRSVPCManagement
