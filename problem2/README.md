@@ -2,7 +2,7 @@
 Ansible control node is remote machine.
 Virtual Machine to be set up is target machine.
 
-1) Install Ansible on remote machine
+1) Install Ansible on remote machine (RHEL/Centos)
 2) Setup passwordless ssh from remote machine to target machine.
 2.1) ssh-add .pem file (private key) of target machine
 2.2) ssh ubuntu@target-machine-ip
