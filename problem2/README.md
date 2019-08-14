@@ -1,20 +1,19 @@
 # Bootstrap instructions
-1. Install terraform - v0.12.6, git in a CentOS machine
-2. git clone this repository
-3. Export the following variables <br>
-  export AWS_ACCESS_KEY_ID=<u>INSERT YOUR AWS ACCESS KEY</u> <br>
-  export AWS_SECRET_ACCESS_KEY=<u>INSERT YOUR AWS SECRET KEY</u>
-4. Run terraform init in the git clone directory
-5. Run terraform apply in the git clone directory
-6. Copy the generated private output into a <filename>.pem file.
-7. ssh -i <pem file> ubuntu@<public ip address of ec2>
+Ansible control node is remote machine.
+Virtual Machine to be set up is target machine.
+
+1) Install Ansible on remote machine
+2) Setup passwordless ssh from remote machine to target machine.
+2.1) ssh-add .pem file (private key) of target machine
+2.2) ssh ubuntu@target-machine-ip
+3) add entry [devops] and target-machine ip to /etc/ansible/hosts file
+4) git clone this repo
+4) cd to problem2 directory
+5) ansible-playbook setup-dev.yml
+6) All services (mysql, tomcat, apache2) should be started and enabled.
 
 # Assumptions
-1. Entire VPC is public (for convenience sake, should not be the case in production)
-2. Keypair is generated using RSA algorithm with 4096 bits
-3. Availability Zone is assumed to be ap-southeast-1a (Singapore)
-4. User belong to groups:
-AmazonEC2FullAccess,
-AmazonVPCCrossAccountNetworkInterfaceOperations,
-AmazonDMSVPCManagementRole,
-AmazonDRSVPCManagement
+1) Added ppa repo which required port 443 to be open on vpc egress.
+2) port 80 is opened for apt-get install
+2) Tomcat 9 link is hardcoded and may change as minor releases happen
+3) The requested ports on the services are the same as the default installation ports so no enforecements / change of config file is attempted. Ideally, this should be enfored for idempotency.
