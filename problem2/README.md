@@ -4,8 +4,9 @@ Virtual Machine to be set up is target machine.
 
 1) Install Ansible on remote machine (RHEL/Centos)
 2) Setup passwordless ssh from remote machine to target machine.
-2.1) ssh-add .pem file (private key) of target machine
-2.2) ssh ubuntu@target-machine-ip
+2.1) make sure ssh-agent is running: eval `ssh-agent -s`
+2.2) ssh-add .pem file (private key) of target machine
+2.3) ssh ubuntu@target-machine-ip
 3) add entry [devops] and target-machine ip to /etc/ansible/hosts file
 4) git clone this repo
 4) cd to problem2 directory
